@@ -1,4 +1,7 @@
 module.exports = class {
-  roll () {}
-  get score () { return 0 }
+  constructor () { this.totalScore = 0 }
+
+  roll (pins) { this.totalScore += pins }
+
+  get score () { return this.totalScore }
 }

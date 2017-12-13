@@ -1,9 +1,23 @@
 const Game = require('./game')
 
-test('gutter game', () => {
-  const game = new Game()
-  for (let i = 0; i < 20; i++) {
-    game.roll(0)
+let game
+
+beforeEach(() => {
+  game = new Game()
+})
+
+const rollMany = (rolls, pins) => {
+  for (let i = 0; i < rolls; i++) {
+    game.roll(pins)
   }
+}
+
+test('gutter game', () => {
+  rollMany(20, 0)
   expect(game.score).toBe(0)
+})
+
+test('all ones', () => {
+  rollMany(20, 1)
+  expect(game.score).toBe(20)
 })
