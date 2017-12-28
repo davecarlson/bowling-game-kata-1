@@ -12,6 +12,11 @@ const rollMany = (rolls, pins) => {
   }
 }
 
+const rollSpare = () => {
+  game.roll(5)
+  game.roll(5)
+}
+
 test('gutter game', () => {
   rollMany(20, 0)
   expect(game.score).toBe(0)
@@ -20,4 +25,11 @@ test('gutter game', () => {
 test('all ones', () => {
   rollMany(20, 1)
   expect(game.score).toBe(20)
+})
+
+test('one spare', () => {
+  rollSpare()
+  game.roll(3)
+  rollMany(17, 0)
+  expect(game.score).toBe(16)
 })
