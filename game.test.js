@@ -17,6 +17,10 @@ const rollSpare = () => {
   game.roll(5)
 }
 
+const rollStrike = () => {
+  game.roll(10)
+}
+
 test('gutter game', () => {
   rollMany(20, 0)
   expect(game.score).toBe(0)
@@ -32,4 +36,12 @@ test('one spare', () => {
   game.roll(3)
   rollMany(17, 0)
   expect(game.score).toBe(16)
+})
+
+test('one strike', () => {
+  rollStrike()
+  game.roll(3)
+  game.roll(4)
+  rollMany(16, 0)
+  expect(game.score).toBe(24)
 })
